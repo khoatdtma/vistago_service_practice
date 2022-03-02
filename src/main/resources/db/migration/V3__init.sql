@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS audit_trail_entity (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    timestamp BIGINT,
+    comments VARCHAR(255),
+    url VARCHAR(1000),
+    action VARCHAR(100),
+    PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+CREATE TABLE IF NOT EXISTS example_vistago_table (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    example_column VARCHAR(200) NOT NULL UNIQUE,
+	  PRIMARY KEY (ID)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+
+CREATE TABLE IF NOT EXISTS example_vistago_table_aud(
+    id BIGINT NOT NULL,
+    example_column VARCHAR(200),
+    rev BIGINT NOT NULL,
+    revtype INTEGER NOT NULL,
+	  PRIMARY KEY (id, rev)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
