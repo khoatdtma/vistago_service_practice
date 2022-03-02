@@ -27,11 +27,17 @@ public class VistagoController {
         return exampleVistagoTableService.findAll();
     }
 
-
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ExampleVistagoTable add(@RequestBody ExampleVistagoTableDto exampleVistagoTableDto){
         return exampleVistagoTableService.save(exampleVistagoTableDto);
     }
+
+    @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@RequestParam String exampleColumn){
+        exampleVistagoTableService.delete(exampleColumn);
+    }
+
 
 }

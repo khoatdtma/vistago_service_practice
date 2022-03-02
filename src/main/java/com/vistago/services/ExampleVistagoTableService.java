@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,6 +31,15 @@ public class ExampleVistagoTableService {
 
     public List<ExampleVistagoTable> findAll(){
         return exampleVistagoTableRepo.findAll();
+    }
+
+    public void delete(String exampleColumn){
+        ExampleVistagoTable existing = exampleVistagoTableRepo.findByExampleColumn(exampleColumn);
+        if(existing!=null){
+            exampleVistagoTableRepo.delete(existing);
+        }else{
+            throw new EntityNotFoundException("Cannot find any entity with exampleColumn: " + exampleColumn);
+        }
     }
 
 }
